@@ -146,9 +146,10 @@ class ParseClient : NSObject {
         }
         
         pfmessage["user"] = PFUser.currentUser()
+        pfmessage["groupID"] = message.groupID
         if (nil != message.location){
             //This is just the location fix so prefix it with MeetME to make it easy to find in the list.
-            pfmessage["location"] = String("MeetME:") + message.location!
+            pfmessage["location"] = message.location!
         }
         pfmessage.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in

@@ -24,7 +24,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // set initial location in Honolulu
         mapView.delegate = self
         locationmgr.delegate = self
         locationmgr.desiredAccuracy = kCLLocationAccuracyBest

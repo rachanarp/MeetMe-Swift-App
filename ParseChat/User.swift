@@ -23,7 +23,6 @@ class User: NSObject{
     
     static var currentUser : User? = nil
     
-    
     func initWithPFUser(user: PFUser?) -> User?{
         if (nil != user)
         {

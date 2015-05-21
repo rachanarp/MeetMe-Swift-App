@@ -24,20 +24,37 @@ class Message: NSObject {
       static func initWithPFObjectArray(objects: [PFObject]) -> NSArray?{
         //TODO : filter the list of object to only care for the MeetMe app ones
         var messages = NSMutableArray()
+        var userslocation = NSMutableDictionary()
         for object in objects {
             if let user : PFUser = object["user"] as? PFUser {
-                var message = Message();
+                var message = Message()
                 message.user = User().initWithPFUser(user)
                 message.user!.location = object["location"] as? String //TODO: convert to CLLocationCoordinate2D?
                 message.text = object["text"] as? String
                 message.destination = object["destination"] as? String
                 message.groupID = object["groupID"] as? String
                 message.location = object["location"] as? String
-                messages.addObject(message)
+                
+                if let username : String? = message.user!.name {
+                    if (nil != (message as? Message)!.location) {
+                        userslocation.setValue(message, forKey: username!)
+                    }
+                
+
+                if (message.groupID == kDefaultMeetMeGroupID) {
+                    if ( nil != message.text) {
+                        messages.addObject(message)
+                    }
+                }
+                }
             }
+        }
+        
+        for object in userslocation {
+            messages.addObject(object.value)
         }
 
         return messages
-    }
+        }
 
 }

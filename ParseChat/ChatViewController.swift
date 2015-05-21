@@ -16,6 +16,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var chatfield: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,23 +38,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         var message = Message()
         message.text = chatfield.text
         ParseClient().sharedInstance.sendMessage(message)
-        
-     /*   var gameScore = PFObject(className:"Message")
-        gameScore["text"] = chatfield.text
-        gameScore["user"] = PFUser.currentUser()
-        gameScore.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                // The object has been saved.
-                println(gameScore["text"])
-            } else {
-                // There was a problem, check error.description
-            }
-        }*/
     }
     
     func queryMessages() {
         self.messages = ParseClient().sharedInstance.queryMessages()!
+       // let group = EventGroup().initWithMessages(ParseClient().sharedInstance.getMessageCache())
+        //println(group)
         self.tableView.reloadData()
     }
     
@@ -64,14 +54,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: UITableViewDataSource methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return self.messages.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell", forIndexPath: indexPath) as! UITableViewCell
         
         var messageStr = ""
-        let message = messages[indexPath.row] as! Message
+        let message = self.messages[indexPath.row] as! Message
+        var nameStr = ""
+        
+        if (nil != message.user) {
+            nameStr += message.user!.name!
+        }
+        
         if (nil != message.text) {
             messageStr = message.text!
         }
@@ -81,7 +77,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (nil != message.location) {
             locationStr = message.location!
         }
-        cell.textLabel?.text = messageStr + " : " + locationStr
+        cell.textLabel?.text = nameStr + ":" + messageStr + " : " + locationStr
         return cell
     }
 

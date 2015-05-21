@@ -14,6 +14,7 @@
 		7C03A8781AF302E20005A828 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C03A8771AF302E20005A828 /* Images.xcassets */; };
 		7C03A87B1AF302E20005A828 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C03A8791AF302E20005A828 /* LaunchScreen.xib */; };
 		7C03A8871AF302E20005A828 /* ParseChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C03A8861AF302E20005A828 /* ParseChatTests.swift */; };
+		7C53B2BF1B0DBF0400DF0533 /* EventGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C53B2BE1B0DBF0400DF0533 /* EventGroup.swift */; };
 		7CA733581B0CE3C200551891 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA733571B0CE3C200551891 /* User.swift */; };
 		7CA7335A1B0CE3CE00551891 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA733591B0CE3CE00551891 /* Message.swift */; };
 		7CC304941B0D61400010AAC9 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC304931B0D61400010AAC9 /* ParseClient.swift */; };
@@ -46,6 +47,7 @@
 		7C03A8801AF302E20005A828 /* ParseChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParseChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C03A8851AF302E20005A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C03A8861AF302E20005A828 /* ParseChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseChatTests.swift; sourceTree = "<group>"; };
+		7C53B2BE1B0DBF0400DF0533 /* EventGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventGroup.swift; sourceTree = "<group>"; };
 		7CA733571B0CE3C200551891 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7CA733591B0CE3CE00551891 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7CC304931B0D61400010AAC9 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				7CA733571B0CE3C200551891 /* User.swift */,
 				7CA733591B0CE3CE00551891 /* Message.swift */,
+				7C53B2BE1B0DBF0400DF0533 /* EventGroup.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				7CD2447A1AF3068B00C927E7 /* LoginViewController.swift in Sources */,
 				7C03A8731AF302E20005A828 /* ViewController.swift in Sources */,
 				7CA733581B0CE3C200551891 /* User.swift in Sources */,
+				7C53B2BF1B0DBF0400DF0533 /* EventGroup.swift in Sources */,
 				7CD2447C1AF3097200C927E7 /* ChatViewController.swift in Sources */,
 				7CEDDA9A1B0BBB5D00DE264C /* MapViewController.swift in Sources */,
 				B736098F1B0DAF1600B06076 /* EventViewController.swift in Sources */,
