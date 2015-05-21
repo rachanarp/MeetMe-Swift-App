@@ -13,13 +13,12 @@ var destinationAddressString: String?
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
- 
-    @IBOutlet weak var mapLabel: UINavigationItem!
     @IBOutlet weak var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 1000
     let locationmgr = CLLocationManager()
     var intervalString : String?
     var titleString: String?
+    var myEvent: EventGroup?
     @IBOutlet weak var etaItem: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -34,6 +33,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     override func viewWillAppear(animated: Bool) {
+        destinationAddressString = myEvent?.destination
+        if destinationAddressString == nil {
+            destinationAddressString = kDefaultMeetMeDestination
+        }
+        self.titleString = destinationAddressString!
+        self.title = self.titleString
+    }
+    
+    func initWithEvent(event: EventGroup) {
+        myEvent = event
+        destinationAddressString = myEvent?.destination
         if destinationAddressString == nil {
             destinationAddressString = kDefaultMeetMeDestination
         }
@@ -138,6 +148,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func sendLocationUpdate() {
         var message = Message()
         message.location = self.intervalString //fromPlacemark.location.description
+        message.groupID = myEvent?.groupID
+        message.user = User.currentUser
+        message.destination = myEvent?.destination
         ParseClient().sharedInstance.sendMessage(message)
     }
     

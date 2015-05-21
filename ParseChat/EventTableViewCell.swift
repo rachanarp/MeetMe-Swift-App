@@ -26,7 +26,7 @@ class EventTableViewCell: UITableViewCell {
     
     func updateWithEvent(event: EventGroup) {
         myEvent = event
-        if let titleText = myEvent?.destination {
+        if let titleText = myEvent?.groupID {
             nameLabel.text = titleText
         }
         

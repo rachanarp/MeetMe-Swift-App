@@ -10,6 +10,7 @@
 		255614091B0E42F8007FD2B1 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255614081B0E42F8007FD2B1 /* MessageTableViewCell.swift */; };
 		2556140C1B0E6C2A007FD2B1 /* EventMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2556140B1B0E6C2A007FD2B1 /* EventMasterViewController.swift */; };
 		2556140E1B0E6ECB007FD2B1 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2556140D1B0E6ECB007FD2B1 /* EventTableViewCell.swift */; };
+		25C4063C1B0E92AE00347B3B /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C4063B1B0E92AE00347B3B /* CreateEventViewController.swift */; };
 		2E82DBB25EBC1773047B5BFC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F0C9BE0B9A68BF3CDAA26D /* libPods.a */; };
 		7C03A8711AF302E20005A828 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C03A8701AF302E20005A828 /* AppDelegate.swift */; };
 		7C03A8731AF302E20005A828 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C03A8721AF302E20005A828 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		255614081B0E42F8007FD2B1 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		2556140B1B0E6C2A007FD2B1 /* EventMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMasterViewController.swift; sourceTree = "<group>"; };
 		2556140D1B0E6ECB007FD2B1 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		25C4063B1B0E92AE00347B3B /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		434E927F80D8613A1DF46050 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7C03A86B1AF302E20005A828 /* ParseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C03A86F1AF302E20005A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				B736098E1B0DAF1600B06076 /* EventViewController.swift */,
 				2556140B1B0E6C2A007FD2B1 /* EventMasterViewController.swift */,
 				2556140D1B0E6ECB007FD2B1 /* EventTableViewCell.swift */,
+				25C4063B1B0E92AE00347B3B /* CreateEventViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				7CD2447A1AF3068B00C927E7 /* LoginViewController.swift in Sources */,
 				7C03A8731AF302E20005A828 /* ViewController.swift in Sources */,
 				7CA733581B0CE3C200551891 /* User.swift in Sources */,
+				25C4063C1B0E92AE00347B3B /* CreateEventViewController.swift in Sources */,
 				2556140C1B0E6C2A007FD2B1 /* EventMasterViewController.swift in Sources */,
 				2556140E1B0E6ECB007FD2B1 /* EventTableViewCell.swift in Sources */,
 				7C53B2BF1B0DBF0400DF0533 /* EventGroup.swift in Sources */,

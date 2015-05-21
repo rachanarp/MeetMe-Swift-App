@@ -18,13 +18,15 @@ class EventMasterViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         ParseClient().sharedInstance.queryEvents({ (eventArr: [EventGroup]) -> Void in
             self.events = eventArr
             self.tableView.reloadData()
         })
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +36,11 @@ class EventMasterViewController: UIViewController {
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "mapSegue" {
+            var destVC = segue.destinationViewController as! MapViewController
+            var sendVC = sender as! EventTableViewCell
+            destVC.initWithEvent(sendVC.myEvent!)
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

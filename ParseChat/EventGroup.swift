@@ -13,9 +13,13 @@ class EventGroup: NSObject{
     var groupID : String?
     var destination : String?
     
-    func initWithId(grpID: String!, loc: String!) {
+    func initWithId(grpID: String!, dest: String?) {
         self.groupID = grpID
-        self.destination = loc
+        if dest != nil {
+            self.destination = dest
+        } else {
+            self.destination = "1026 Valencia St, San Francisco, CA"
+        }
     }
     
     func initWithMessages(messages : NSArray) {

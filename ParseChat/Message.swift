@@ -17,9 +17,10 @@ class Message: NSObject {
     
     var text: String?
     var user: User?
-    var destination: String? = kDefaultMeetMeDestination // Store the group destination in Message so it can be updated on the fly?
-    var groupID: String? = kDefaultMeetMeGroupID
+    var destination: String? // Store the group destination in Message so it can be updated on the fly?
+    var groupID: String?
     var location: String?
+    var myEvent: EventGroup?
     
       static func initWithPFObjectArray(objects: [PFObject]) -> NSArray?{
         //TODO : filter the list of object to only care for the MeetMe app ones
@@ -34,6 +35,18 @@ class Message: NSObject {
                 message.destination = object["destination"] as? String
                 message.groupID = object["groupID"] as? String
                 message.location = object["location"] as? String
+                var evt = ParseClient.eventList.filter({ (event: EventGroup?) -> Bool in
+                    event!.groupID == message.groupID
+                }).first
+                if (evt == nil) {
+                    evt = EventGroup()
+                    evt!.initWithId(message.groupID, dest: message.destination)
+                    ParseClient.eventList.append(evt!)
+                }
+                message.myEvent = evt
+                if let dest = message.myEvent!.destination {
+                    message.destination = dest
+                }
                 
                 if let username : String? = message.user!.name {
                     if (nil != (message as? Message)!.location) {

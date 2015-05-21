@@ -87,6 +87,74 @@
             </objects>
             <point key="canvasLocation" x="1058" y="-360"/>
         </scene>
+        <!--Create Event-->
+        <scene sceneID="nJQ-Ww-Ta4">
+            <objects>
+                <viewController id="ZcZ-2R-USZ" customClass="CreateEventViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ymo-xA-3Io"/>
+                        <viewControllerLayoutGuide type="bottom" id="4RI-5t-K7g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ylk-SB-Tx0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Destination Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW1-ud-40A">
+                                <rect key="frame" x="80" y="274" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WjX-c1-ReO">
+                                <rect key="frame" x="16" y="303" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbK-ru-nkP">
+                                <rect key="frame" x="116" y="124" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qME-hq-W3J">
+                                <rect key="frame" x="16" y="153" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKH-We-RkI">
+                                <rect key="frame" x="143" y="518" width="34" height="30"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSave:" destination="ZcZ-2R-USZ" eventType="touchUpInside" id="dlI-hX-piA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="sW1-ud-40A" secondAttribute="centerX" id="9Di-LU-Ko4"/>
+                            <constraint firstItem="4RI-5t-K7g" firstAttribute="top" secondItem="OKH-We-RkI" secondAttribute="bottom" constant="20" id="9bW-0D-EJc"/>
+                            <constraint firstAttribute="centerX" secondItem="OKH-We-RkI" secondAttribute="centerX" id="C8B-SW-HQd"/>
+                            <constraint firstItem="qME-hq-W3J" firstAttribute="top" secondItem="kbK-ru-nkP" secondAttribute="bottom" constant="8" id="Chh-UP-EPn"/>
+                            <constraint firstItem="sW1-ud-40A" firstAttribute="top" secondItem="qME-hq-W3J" secondAttribute="bottom" constant="50" id="Kc7-41-SN1"/>
+                            <constraint firstAttribute="centerX" secondItem="kbK-ru-nkP" secondAttribute="centerX" id="NbB-T3-cEI"/>
+                            <constraint firstItem="WjX-c1-ReO" firstAttribute="top" secondItem="sW1-ud-40A" secondAttribute="bottom" constant="8" id="RSL-yX-aB2"/>
+                            <constraint firstItem="kbK-ru-nkP" firstAttribute="top" secondItem="ymo-xA-3Io" secondAttribute="bottom" constant="100" id="UE7-vh-my5"/>
+                            <constraint firstItem="WjX-c1-ReO" firstAttribute="top" secondItem="sW1-ud-40A" secondAttribute="bottom" constant="8" id="nc2-54-Bz4"/>
+                            <constraint firstItem="qME-hq-W3J" firstAttribute="top" secondItem="kbK-ru-nkP" secondAttribute="bottom" constant="8" id="rCl-pa-XdT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Event" id="oBk-oq-xa7"/>
+                    <connections>
+                        <outlet property="destField" destination="WjX-c1-ReO" id="8fA-iV-Nch"/>
+                        <outlet property="nameField" destination="qME-hq-W3J" id="4nl-Bx-LrN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7r6-lj-3ib" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1058" y="1016"/>
+        </scene>
         <!--Chat View Controller-->
         <scene sceneID="QKU-I5-yGy">
             <objects>
@@ -236,7 +304,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="Yfx-RE-UE4" id="VXs-6h-ldw"/>
-                                            <segue destination="q05-X8-ZRN" kind="push" id="hjI-82-9WL"/>
+                                            <segue destination="q05-X8-ZRN" kind="push" identifier="mapSegue" id="hjI-82-9WL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -250,7 +318,13 @@
                             <constraint firstItem="Ad4-Dz-ys5" firstAttribute="top" secondItem="KUS-h8-ade" secondAttribute="bottom" id="joe-QY-VhO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Events" id="Ewm-7k-oGw"/>
+                    <navigationItem key="navigationItem" title="Events" id="Ewm-7k-oGw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eOV-kX-Jhq">
+                            <connections>
+                                <segue destination="ZcZ-2R-USZ" kind="push" id="in9-is-DbM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="KUS-h8-ade" id="GaY-iL-aTU"/>
                     </connections>

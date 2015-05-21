@@ -10,6 +10,8 @@ import Foundation
 
 class ParseClient : NSObject {
     
+    static var eventList = [EventGroup]()
+    
     var lastMessagesCache = NSArray()
     
     var sharedInstance :ParseClient {
@@ -137,7 +139,6 @@ class ParseClient : NSObject {
     func queryEvents(completion: ([EventGroup]) -> Void) {
         var query = PFQuery(className:"Message")
         query.includeKey("user")
-        var out = [EventGroup]()
         var excluder = [String]()
         
         query.findObjectsInBackgroundWithBlock {
@@ -150,16 +151,23 @@ class ParseClient : NSObject {
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                        var test = find(excluder, object["groupID"] as! String)
-                        if (test == nil) {
-                            excluder.append(object["groupID"] as! String)
+                        var evt = ParseClient.eventList.filter({ (event: EventGroup?) -> Bool in
+                            event?.groupID == object["groupID"] as? String
+                        }).first
+                        if evt == nil {
                             var newEvt = EventGroup()
-                            newEvt.initWithId(object["groupID"] as! String, loc: object["groupID"] as! String)
-                            out.append(newEvt)
+                            newEvt.initWithId(object["groupID"] as! String, dest: object["destination"] as? String)
+                            ParseClient.eventList.append(newEvt)
+                        } else {
+                            if let dest = object["destination"] as? String {
+                                if evt?.destination == nil || evt?.destination == "1026 Valencia St, San Francisco, CA" {
+                                    evt!.destination = dest
+                                }
+                            }
                         }
                     }
                 }
-                completion(out)
+                completion(ParseClient.eventList)
             } else {
                 // Log details of the failure
                 println("Error: \(error!) \(error!.userInfo!)")
@@ -183,6 +191,11 @@ class ParseClient : NSObject {
         if (nil != message.location){
             //This is just the location fix so prefix it with MeetME to make it easy to find in the list.
             pfmessage["location"] = message.location!
+        }
+        if let dest = message.destination {
+            if dest != "1026 Valencia St, San Francisco, CA" {
+                pfmessage["destination"] = dest
+            }
         }
         pfmessage.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
