@@ -28,12 +28,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationmgr.delegate = self
         locationmgr.desiredAccuracy = kCLLocationAccuracyBest
         locationmgr.requestWhenInUseAuthorization()
+    
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         if destinationAddressString == nil {
             destinationAddressString = kDefaultMeetMeDestination
         }
         mapLabel.title = "Meet @ " + destinationAddressString!
     }
-    
+
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.NotDetermined {
             locationmgr.requestWhenInUseAuthorization()
