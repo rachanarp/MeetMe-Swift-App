@@ -99,12 +99,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aIY-sx-5ki">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aIY-sx-5ki">
                                 <rect key="frame" x="24" y="531" width="228" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFQ-07-MFq">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFQ-07-MFq">
                                 <rect key="frame" x="260" y="530" width="36" height="30"/>
                                 <state key="normal" title="Send">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,6 +188,7 @@
                             <constraint firstAttribute="trailing" secondItem="cug-HQ-FNo" secondAttribute="trailing" id="oVh-Df-g4E"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="XFS-bk-xFV"/>
                     <connections>
                         <outlet property="chatfield" destination="aIY-sx-5ki" id="hD2-iU-uz0"/>
                         <outlet property="tableView" destination="cug-HQ-FNo" id="eHF-1q-ADr"/>
@@ -197,7 +198,7 @@
             </objects>
             <point key="canvasLocation" x="1434" y="1016"/>
         </scene>
-        <!--Event Master View Controller-->
+        <!--Events-->
         <scene sceneID="2qN-Kk-Shm">
             <objects>
                 <viewController storyboardIdentifier="EventsVC" id="4os-26-8hU" customClass="EventMasterViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
@@ -249,7 +250,7 @@
                             <constraint firstItem="Ad4-Dz-ys5" firstAttribute="top" secondItem="KUS-h8-ade" secondAttribute="bottom" id="joe-QY-VhO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ewm-7k-oGw"/>
+                    <navigationItem key="navigationItem" title="Events" id="Ewm-7k-oGw"/>
                     <connections>
                         <outlet property="tableView" destination="KUS-h8-ade" id="GaY-iL-aTU"/>
                     </connections>
@@ -271,33 +272,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7kQ-4J-vRr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xt-GZ-5tR">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Chat" id="4cB-HI-JV9">
+                                        <connections>
+                                            <segue destination="n5w-xu-xkc" kind="push" id="s7K-Jw-sEM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5xW-Ls-0Rn"/>
+                                    <barButtonItem title="ETA" id="hHH-WQ-Gcr">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aiR-ey-F3J"/>
+                                    <barButtonItem title="Dest" id="wlD-mU-glS">
+                                        <connections>
+                                            <segue destination="YXs-z6-Fb0" kind="push" id="u2Y-Xd-JmT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ujg-dM-LgR" firstAttribute="top" secondItem="7kQ-4J-vRr" secondAttribute="bottom" id="4ZD-30-Aqs"/>
                             <constraint firstItem="7kQ-4J-vRr" firstAttribute="leading" secondItem="9bS-7P-eCx" secondAttribute="leading" id="76m-UU-h3h"/>
-                            <constraint firstItem="ujg-dM-LgR" firstAttribute="top" secondItem="7kQ-4J-vRr" secondAttribute="bottom" id="BUE-KH-A1M"/>
+                            <constraint firstAttribute="bottom" secondItem="4xt-GZ-5tR" secondAttribute="bottom" id="7wm-SY-GAo"/>
+                            <constraint firstItem="4xt-GZ-5tR" firstAttribute="leading" secondItem="9bS-7P-eCx" secondAttribute="leading" id="P5D-Cq-JNu"/>
+                            <constraint firstItem="ujg-dM-LgR" firstAttribute="top" secondItem="7kQ-4J-vRr" secondAttribute="bottom" id="RLv-Hx-i42"/>
+                            <constraint firstItem="ujg-dM-LgR" firstAttribute="top" secondItem="7kQ-4J-vRr" secondAttribute="bottom" id="aFU-Uv-rb2"/>
                             <constraint firstAttribute="trailing" secondItem="7kQ-4J-vRr" secondAttribute="trailing" id="gkv-9g-sgb"/>
+                            <constraint firstAttribute="trailing" secondItem="4xt-GZ-5tR" secondAttribute="trailing" id="mx6-sG-lp1"/>
                             <constraint firstItem="7kQ-4J-vRr" firstAttribute="top" secondItem="9bS-7P-eCx" secondAttribute="top" id="qYY-Ro-zl6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Map View" id="wIs-xG-tbg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="4cB-HI-JV9">
-                            <connections>
-                                <segue destination="n5w-xu-xkc" kind="popover" popoverAnchorView="7kQ-4J-vRr" id="s7K-Jw-sEM">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="wlD-mU-glS">
-                            <connections>
-                                <segue destination="YXs-z6-Fb0" kind="push" id="u2Y-Xd-JmT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Map View" id="wIs-xG-tbg"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="etaItem" destination="hHH-WQ-Gcr" id="RFa-Qc-3Bl"/>
                         <outlet property="mapView" destination="7kQ-4J-vRr" id="3bi-oI-QhL"/>
                     </connections>
                 </viewController>

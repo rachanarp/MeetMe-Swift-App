@@ -20,6 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let locationmgr = CLLocationManager()
     var intervalString : String?
     var titleString: String?
+    @IBOutlet weak var etaItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,8 +105,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.getETA(currentmark, toPlacemark: placemark)
             
             //Display the current user's ETA on the title bar.
-            if let newTitleStr = self.intervalString {
-                self.title = self.titleString! + " @ " + newTitleStr
+            if let newETA = self.intervalString {
+                self.etaItem.title = "ETA: " + newETA
             }
         })
     }
