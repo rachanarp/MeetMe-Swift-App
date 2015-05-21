@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="n5w-xu-xkc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kNk-fp-Bnf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="348"/>
+            <point key="canvasLocation" x="1058" y="-360"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="QKU-I5-yGy">
@@ -113,33 +113,62 @@
                                     <action selector="onSend:" destination="n5w-xu-xkc" eventType="touchUpInside" id="ZDJ-Cg-vGQ"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cug-HQ-FNo">
-                                <rect key="frame" x="0.0" y="83" width="320" height="440"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cug-HQ-FNo">
+                                <rect key="frame" x="0.0" y="138" width="320" height="384"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="62" id="Adn-U5-uc9" customClass="MessageTableViewCell" customModule="ParseChat" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="64" id="Adn-U5-uc9" customClass="MessageTableViewCell" customModule="ParseChat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Adn-U5-uc9" id="C3U-Ce-Jg5">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-dY-nZS">
-                                                    <rect key="frame" x="8" y="8" width="304" height="45"/>
-                                                    <string key="text">Message Text HereMessage Text HereMessage Text HereMessage Text HereMessage Text HereMessage Text HereMessage Text HereMessage Text Here</string>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Check In" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-dY-nZS">
+                                                    <rect key="frame" x="66" y="34" width="246" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JQR-t2-UxL">
+                                                    <rect key="frame" x="8" y="8" width="50" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="UGt-f3-IZa"/>
+                                                        <constraint firstAttribute="width" constant="50" id="tPp-gz-YjX"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uo4-eC-sAo">
+                                                    <rect key="frame" x="66" y="8" width="167" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalCompressionResistancePriority="751" text="LocStamp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NX-DG-zA9">
+                                                    <rect key="frame" x="233" y="8" width="79" height="26"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="x1Z-dY-nZS" firstAttribute="top" secondItem="C3U-Ce-Jg5" secondAttribute="topMargin" id="YTa-uS-QzN"/>
-                                                <constraint firstItem="x1Z-dY-nZS" firstAttribute="leading" secondItem="C3U-Ce-Jg5" secondAttribute="leadingMargin" id="a4b-wz-iqg"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="x1Z-dY-nZS" secondAttribute="bottom" id="dig-h6-OkZ"/>
-                                                <constraint firstItem="x1Z-dY-nZS" firstAttribute="trailing" secondItem="C3U-Ce-Jg5" secondAttribute="trailingMargin" id="o4O-IV-nqY"/>
+                                                <constraint firstItem="7NX-DG-zA9" firstAttribute="leading" secondItem="Uo4-eC-sAo" secondAttribute="trailing" id="8jz-nZ-rS7"/>
+                                                <constraint firstItem="JQR-t2-UxL" firstAttribute="top" secondItem="C3U-Ce-Jg5" secondAttribute="topMargin" id="BTM-SS-Ysg"/>
+                                                <constraint firstItem="7NX-DG-zA9" firstAttribute="trailing" secondItem="C3U-Ce-Jg5" secondAttribute="trailingMargin" id="FI4-Lw-HG1"/>
+                                                <constraint firstItem="x1Z-dY-nZS" firstAttribute="top" secondItem="7NX-DG-zA9" secondAttribute="bottom" id="GoP-lW-i1P"/>
+                                                <constraint firstItem="7NX-DG-zA9" firstAttribute="top" secondItem="C3U-Ce-Jg5" secondAttribute="topMargin" id="M85-C3-s7R"/>
+                                                <constraint firstItem="Uo4-eC-sAo" firstAttribute="leading" secondItem="JQR-t2-UxL" secondAttribute="trailing" constant="8" id="SVL-Uy-Sbv"/>
+                                                <constraint firstItem="x1Z-dY-nZS" firstAttribute="bottom" secondItem="C3U-Ce-Jg5" secondAttribute="bottomMargin" id="Yy1-fR-jBM"/>
+                                                <constraint firstItem="7NX-DG-zA9" firstAttribute="leading" secondItem="Uo4-eC-sAo" secondAttribute="trailing" id="ncP-8F-GX5"/>
+                                                <constraint firstItem="x1Z-dY-nZS" firstAttribute="trailing" secondItem="C3U-Ce-Jg5" secondAttribute="trailingMargin" id="rSU-cf-pjS"/>
+                                                <constraint firstItem="x1Z-dY-nZS" firstAttribute="leading" secondItem="JQR-t2-UxL" secondAttribute="trailing" constant="8" id="vnH-qr-Y6p"/>
+                                                <constraint firstItem="JQR-t2-UxL" firstAttribute="leading" secondItem="C3U-Ce-Jg5" secondAttribute="leadingMargin" id="xUh-S4-mUk"/>
+                                                <constraint firstItem="Uo4-eC-sAo" firstAttribute="top" secondItem="C3U-Ce-Jg5" secondAttribute="topMargin" id="z0K-t9-ems"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="identiconView" destination="JQR-t2-UxL" id="AF9-qH-HCd"/>
+                                            <outlet property="locLabel" destination="7NX-DG-zA9" id="xF4-EF-juT"/>
                                             <outlet property="messageLabel" destination="x1Z-dY-nZS" id="P6T-ea-i1f"/>
+                                            <outlet property="usernameLabel" destination="Uo4-eC-sAo" id="gIC-Eg-ev6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -151,21 +180,14 @@
                             <constraint firstItem="aIY-sx-5ki" firstAttribute="leading" secondItem="wb9-nJ-mCe" secondAttribute="leadingMargin" constant="8" id="FqJ-zg-nej"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MFQ-07-MFq" secondAttribute="trailing" constant="8" id="H7m-Zh-RXN"/>
                             <constraint firstItem="GBg-X2-jhj" firstAttribute="top" secondItem="MFQ-07-MFq" secondAttribute="bottom" constant="8" id="Hzb-CF-9ry"/>
+                            <constraint firstItem="cug-HQ-FNo" firstAttribute="top" secondItem="faF-yD-TWc" secondAttribute="bottom" id="XPv-IO-fgF"/>
                             <constraint firstItem="MFQ-07-MFq" firstAttribute="centerY" secondItem="aIY-sx-5ki" secondAttribute="centerY" constant="-1" id="ZeX-ad-doh"/>
                             <constraint firstItem="MFQ-07-MFq" firstAttribute="leading" secondItem="aIY-sx-5ki" secondAttribute="trailing" constant="8" id="bbg-U6-OSe"/>
                             <constraint firstItem="MFQ-07-MFq" firstAttribute="top" secondItem="cug-HQ-FNo" secondAttribute="bottom" constant="8" id="hlK-RZ-KPW"/>
-                            <constraint firstItem="cug-HQ-FNo" firstAttribute="top" secondItem="faF-yD-TWc" secondAttribute="bottom" id="kvI-YW-Inf"/>
                             <constraint firstItem="MFQ-07-MFq" firstAttribute="leading" secondItem="aIY-sx-5ki" secondAttribute="trailing" constant="8" id="neS-JN-SQd"/>
                             <constraint firstAttribute="trailing" secondItem="cug-HQ-FNo" secondAttribute="trailing" id="oVh-Df-g4E"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xhv-Xl-QnR">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="v2d-Ro-Fpb">
-                            <connections>
-                                <segue destination="q05-X8-ZRN" kind="modal" modalPresentationStyle="pageSheet" modalTransitionStyle="flipHorizontal" id="Jxi-0z-Ihz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="chatfield" destination="aIY-sx-5ki" id="hD2-iU-uz0"/>
                         <outlet property="tableView" destination="cug-HQ-FNo" id="eHF-1q-ADr"/>
@@ -173,12 +195,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbG-Oc-5pq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1538" y="348"/>
+            <point key="canvasLocation" x="1434" y="1016"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Meet Loc-->
         <scene sceneID="N2s-6F-Xrg">
             <objects>
-                <viewController id="q05-X8-ZRN" customClass="MapViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapsVC" id="q05-X8-ZRN" customClass="MapViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NuP-Or-FoI"/>
                         <viewControllerLayoutGuide type="bottom" id="ujg-dM-LgR"/>
@@ -188,50 +210,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7kQ-4J-vRr">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-rz-ZtB">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="56e-fu-N6s"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Meeting at : Rdio" id="XPI-Lm-7kK">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="4cB-HI-JV9">
-                                            <connections>
-                                                <action selector="onMessagesTapped:" destination="q05-X8-ZRN" id="Dxr-wj-Ajf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ujg-dM-LgR" firstAttribute="top" secondItem="7kQ-4J-vRr" secondAttribute="bottom" id="4ZD-30-Aqs"/>
                             <constraint firstItem="7kQ-4J-vRr" firstAttribute="leading" secondItem="9bS-7P-eCx" secondAttribute="leading" id="76m-UU-h3h"/>
                             <constraint firstItem="ujg-dM-LgR" firstAttribute="top" secondItem="7kQ-4J-vRr" secondAttribute="bottom" id="BUE-KH-A1M"/>
-                            <constraint firstItem="VIC-rz-ZtB" firstAttribute="leading" secondItem="9bS-7P-eCx" secondAttribute="leading" id="DfF-LI-VVC"/>
                             <constraint firstAttribute="trailing" secondItem="7kQ-4J-vRr" secondAttribute="trailing" id="gkv-9g-sgb"/>
-                            <constraint firstItem="VIC-rz-ZtB" firstAttribute="top" secondItem="NuP-Or-FoI" secondAttribute="bottom" id="oAw-QN-v06"/>
-                            <constraint firstAttribute="trailing" secondItem="VIC-rz-ZtB" secondAttribute="trailing" id="rof-4n-Jz5"/>
-                            <constraint firstItem="7kQ-4J-vRr" firstAttribute="top" secondItem="VIC-rz-ZtB" secondAttribute="bottom" id="wmq-qr-Gt1"/>
+                            <constraint firstItem="7kQ-4J-vRr" firstAttribute="top" secondItem="9bS-7P-eCx" secondAttribute="top" id="qYY-Ro-zl6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wIs-xG-tbg">
-                        <barButtonItem key="rightBarButtonItem" title="Event" id="G77-ZG-U4c">
+                    <navigationItem key="navigationItem" title="Meet Loc" id="wIs-xG-tbg">
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="4cB-HI-JV9">
                             <connections>
-                                <segue destination="YXs-z6-Fb0" kind="push" id="6iJ-fY-Dhd"/>
+                                <segue destination="n5w-xu-xkc" kind="popover" popoverAnchorBarButtonItem="4cB-HI-JV9" id="s7K-Jw-sEM">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="wlD-mU-glS">
+                            <connections>
+                                <segue destination="YXs-z6-Fb0" kind="push" id="u2Y-Xd-JmT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapLabel" destination="XPI-Lm-7kK" id="0Mh-tj-VaM"/>
                         <outlet property="mapView" destination="7kQ-4J-vRr" id="3bi-oI-QhL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZ8-5g-msG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986" y="348"/>
+            <point key="canvasLocation" x="1434" y="332"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nUy-Bv-7Ya">
@@ -249,7 +260,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dh-EK-QwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="348"/>
+            <point key="canvasLocation" x="694" y="-360"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u7a-7A-oDu">
@@ -262,12 +273,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="n5w-xu-xkc" kind="relationship" relationship="rootViewController" id="fgb-lT-LEw"/>
+                        <segue destination="q05-X8-ZRN" kind="relationship" relationship="rootViewController" id="IiO-qv-rrW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tc3-wh-6XG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078" y="348"/>
+            <point key="canvasLocation" x="694" y="332"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="bLc-zX-2gS">
@@ -321,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dtc-t6-6Fd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="348"/>
+            <point key="canvasLocation" x="1834" y="332"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let regionRadius: CLLocationDistance = 1000
     let locationmgr = CLLocationManager()
     var intervalString : String?
+    var titleString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if destinationAddressString == nil {
             destinationAddressString = kDefaultMeetMeDestination
         }
-        mapLabel.title = "Meet @ " + destinationAddressString!
+        self.titleString = destinationAddressString!
+        self.title = self.titleString
     }
 
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -102,7 +104,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.getETA(currentmark, toPlacemark: placemark)
             
             //Display the current user's ETA on the title bar.
-            self.title = self.intervalString
+            if let newTitleStr = self.intervalString {
+                self.title = self.titleString! + " @ " + newTitleStr
+            }
         })
     }
     

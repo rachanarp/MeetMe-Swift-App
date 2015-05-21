@@ -62,24 +62,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell", forIndexPath: indexPath) as! MessageTableViewCell
         
-        var messageStr = ""
+        
         let message = self.messages[indexPath.row] as! Message
-        var nameStr = ""
         
-        if (nil != message.user) {
-            nameStr += message.user!.name!
-        }
+        cell.updateWithMessage(message)
         
-        if (nil != message.text) {
-            messageStr = message.text!
-        }
-        
-        //TODO: use the location to show the friend's status
-        var locationStr = ""
-        if (nil != message.location) {
-            locationStr = message.location!
-        }
-        cell.messageLabel?.text = nameStr + ":" + messageStr + " : " + locationStr
         return cell
     }
 
