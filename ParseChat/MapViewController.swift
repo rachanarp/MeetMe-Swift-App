@@ -28,6 +28,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationmgr.delegate = self
         locationmgr.desiredAccuracy = kCLLocationAccuracyBest
         locationmgr.requestWhenInUseAuthorization()
+        if destinationAddressString == nil {
+            destinationAddressString = kDefaultMeetMeDestination
+        }
+        destinationLabel.text = "Meet @ " + destinationAddressString!
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

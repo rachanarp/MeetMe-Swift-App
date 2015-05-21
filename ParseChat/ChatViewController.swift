@@ -38,6 +38,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         var message = Message()
         message.text = chatfield.text
         ParseClient().sharedInstance.sendMessage(message)
+        chatfield.text = ""
     }
     
     func queryMessages() {
