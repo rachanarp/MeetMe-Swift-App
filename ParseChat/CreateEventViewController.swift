@@ -30,7 +30,7 @@ class CreateEventViewController: UIViewController {
         message.user = User.currentUser
         message.destination = destField.text
         ParseClient().sharedInstance.sendMessage(message)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
 

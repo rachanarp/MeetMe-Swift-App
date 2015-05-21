@@ -12,6 +12,7 @@ import UIKit
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var messages = NSArray()
+    var myEvent: EventGroup?
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -35,10 +36,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func onSend(sender: AnyObject) {
-        
         var message = Message()
         message.text = chatfield.text
+        message.groupID = myEvent?.groupID
+        message.user = User.currentUser
+        message.destination = myEvent?.destination
         ParseClient().sharedInstance.sendMessage(message)
+        queryMessages()
         chatfield.text = ""
     }
     

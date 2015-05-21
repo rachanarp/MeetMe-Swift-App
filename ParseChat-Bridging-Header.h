@@ -4,3 +4,4 @@
 
 #import <Parse/Parse.h>
 #import <IGIdenticon/IGIdenticon.h>
+#import "NSDate+TimeAgo.h"

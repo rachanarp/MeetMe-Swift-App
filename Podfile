@@ -4,4 +4,5 @@ pod 'AFNetworking'
 pod 'BDBOAuth1Manager'
 pod 'Parse'
 pod 'IGIdenticon'
+pod 'NSDate+TimeAgo'
 

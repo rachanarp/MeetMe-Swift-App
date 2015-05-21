@@ -25,6 +25,7 @@ PODS:
     - AFNetworking/NSURLSession (~> 2.5.0)
   - Bolts/Tasks (1.1.5)
   - IGIdenticon (0.2.1)
+  - NSDate+TimeAgo (1.0.3)
   - Parse (1.7.4):
     - Bolts/Tasks (>= 1.1.5)
 
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
   - IGIdenticon
+  - NSDate+TimeAgo
   - Parse
 
 SPEC CHECKSUMS:
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   BDBOAuth1Manager: 2e28773b58f880fb36b5cd3efcf0b1fefbc78a99
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   IGIdenticon: c7fdcca04a3c129190179f3f1881c902e3577cba
+  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
   Parse: 6ca512c6e860b66739c95151b2f76ac4712b7842
 
 COCOAPODS: 0.37.1

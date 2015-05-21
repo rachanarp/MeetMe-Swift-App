@@ -19,6 +19,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var intervalString : String?
     var titleString: String?
     var myEvent: EventGroup?
+    var currMark: MKPlacemark?
+    var destMark: MKPlacemark?
     @IBOutlet weak var etaItem: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -109,16 +111,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             let currentmark : MKPlacemark = MKPlacemark(coordinate: newLocation.coordinate, addressDictionary: nil)
             
-            //This fights for attention. TODO fix it.
-            self.centerMapOnLocation(currentmark.location)
-            
             self.getETA(currentmark, toPlacemark: placemark)
+            
+            var address = placemark.addressDictionary
+            
+            self.destMark = placemark
+            self.currMark = currentmark
+            
             
             //Display the current user's ETA on the title bar.
             if let newETA = self.intervalString {
-                self.etaItem.title = "ETA: " + newETA
+                self.etaItem.title = newETA
+            }
+            if let newTitle = address["Name"] as? String {
+                self.title = newTitle
+                if let newCity = address["City"] as? String {
+                    self.myEvent?.destination = newTitle + ", " + newCity
+                }
             }
         })
+    }
+    
+    @IBAction func onETAPinTap(sender: AnyObject) {
+        if let toLoc = self.destMark?.location {
+            self.centerMapOnLocation(toLoc)
+        }
+    }
+    
+    @IBAction func onETATapped(sender: AnyObject) {
+        if let toLoc = self.currMark?.location {
+            self.centerMapOnLocation(toLoc)
+        }
     }
     
     func getETA(fromPlacemark:MKPlacemark, toPlacemark:MKPlacemark) {
@@ -140,6 +163,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 let intervalmin = (interval%3600)/60
                 let intervalsec = (interval%3600)%60
                 self.intervalString = String(format: "%.0f:%2.0f:%.0f",intervalhr, intervalmin, intervalsec)
+                self.intervalString = NSDate(timeIntervalSinceNow: interval * -1).dateTimeAgo().stringByReplacingOccurrencesOfString("ago", withString: "from now")
                 
             }
         })
@@ -164,14 +188,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "chatSegue" {
+            var destVC = segue.destinationViewController as! ChatViewController
+            destVC.myEvent = self.myEvent
+        }
     }
-    */
 
 }
