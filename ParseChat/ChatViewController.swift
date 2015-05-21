@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var messages = NSArray()
@@ -32,7 +33,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func onSend(sender: AnyObject) {
-        var gameScore = PFObject(className:"Message")
+        
+        var message = Message()
+        message.text = chatfield.text
+        ParseClient().sharedInstance.sendMessage(message)
+        
+     /*   var gameScore = PFObject(className:"Message")
         gameScore["text"] = chatfield.text
         gameScore["user"] = PFUser.currentUser()
         gameScore.saveInBackgroundWithBlock {
@@ -43,7 +49,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 // There was a problem, check error.description
             }
-        }
+        }*/
     }
     
     func queryMessages() {
@@ -63,9 +69,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell", forIndexPath: indexPath) as! UITableViewCell
+        
+        var messageStr = ""
         let message = messages[indexPath.row] as! Message
-
-        cell.textLabel?.text = message.text
+        if (nil != message.text) {
+            messageStr = message.text!
+        }
+        
+        //TODO: use the location to show the friend's status
+        var locationStr = ""
+        if (nil != message.location) {
+            locationStr = message.location!
+        }
+        cell.textLabel?.text = messageStr + " : " + locationStr
         return cell
     }
 

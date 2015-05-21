@@ -37,8 +37,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
              mapView.showsUserLocation = true
             locationmgr.startUpdatingLocation()
             
-            //Rdio 37.7676116,-122.4109711
-            let destinationLocation = CLLocation(latitude: 37.7676116, longitude: -122.4109711)
             let geoCoder = CLGeocoder()
             geoCoder.geocodeAddressString(kDefaultMeetMeDestination, completionHandler: {
                 (placemarks:[AnyObject]!, error:NSError!) -> Void in
@@ -48,6 +46,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
                 self.mapView.addAnnotation(placemark);
                 self.centerMapOnLocation(placemark.location);
+                
+                //Send location fix every 15 sec
+                self.sendLocationtimer()
             })
         }
     }
@@ -81,6 +82,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             self.getETA(currentmark, toPlacemark: placemark)
             
+            //Display the current user's ETA on the title bar.
             self.title = self.intervalString
         })
     }
@@ -96,8 +98,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         let directions = MKDirections(request: request)
         
-        
-        
         directions.calculateETAWithCompletionHandler({ (response: MKETAResponse!, error:NSError!) -> Void in
             if (nil == error)
             {
@@ -106,8 +106,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 let intervalmin = (interval%3600)/60
                 let intervalsec = (interval%3600)%60
                 self.intervalString = String(format: "%.0f:%2.0f:%.0f",intervalhr, intervalmin, intervalsec)
+                
             }
         })
+    }
+    
+    func sendLocationUpdate() {
+        var message = Message()
+        message.location = self.intervalString //fromPlacemark.location.description
+        ParseClient().sharedInstance.sendMessage(message)
+    }
+    
+    func sendLocationtimer() {
+        NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "sendLocationUpdate", userInfo: nil, repeats: true)
     }
 
     func centerMapOnLocation(location: CLLocation) {

@@ -137,4 +137,28 @@ class ParseClient : NSObject {
     func getMessageCache() -> NSArray {
         return lastMessagesCache
     }
+    
+    func sendMessage(message : Message) {
+        var pfmessage = PFObject(className:"Message")
+        
+        if (nil != message.text){
+           pfmessage["text"] = message.text
+        }
+        
+        pfmessage["user"] = PFUser.currentUser()
+        if (nil != message.location){
+            //This is just the location fix so prefix it with MeetME to make it easy to find in the list.
+            pfmessage["location"] = String("MeetME:") + message.location!
+        }
+        pfmessage.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                // The object has been saved.
+                println(pfmessage["text"])
+            } else {
+                // There was a problem, check error.description
+            }
+        }
+    }
+
 }
