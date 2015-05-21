@@ -23,6 +23,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 70
         
         //Start refreshing the chats
         timer()
@@ -59,7 +60,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell", forIndexPath: indexPath) as! MessageTableViewCell
         
         var messageStr = ""
         let message = self.messages[indexPath.row] as! Message
@@ -78,7 +79,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (nil != message.location) {
             locationStr = message.location!
         }
-        cell.textLabel?.text = nameStr + ":" + messageStr + " : " + locationStr
+        cell.messageLabel?.text = nameStr + ":" + messageStr + " : " + locationStr
         return cell
     }
 

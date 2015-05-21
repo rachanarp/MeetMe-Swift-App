@@ -14,10 +14,10 @@ var destinationAddressString: String?
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
  
+    @IBOutlet weak var mapLabel: UINavigationItem!
     @IBOutlet weak var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 1000
     let locationmgr = CLLocationManager()
-    @IBOutlet weak var destinationLabel: UILabel!
     var intervalString : String?
     
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if destinationAddressString == nil {
             destinationAddressString = kDefaultMeetMeDestination
         }
-        destinationLabel.text = "Meet @ " + destinationAddressString!
+        mapLabel.title = "Meet @ " + destinationAddressString!
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -59,6 +59,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.sendLocationtimer()
             })
         }
+    }
+    
+    @IBAction func onMessagesTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     //TODO: Optimize the location calls.
