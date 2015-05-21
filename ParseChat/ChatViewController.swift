@@ -10,7 +10,7 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var messages = [PFObject]()
+    var messages = NSArray()
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -21,6 +21,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //Start refreshing the chats
         timer()
     }
 
@@ -45,29 +47,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func queryMessages() {
-        var query = PFQuery(className:"Message")
-        query.includeKey("user")
-        
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                println("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
-                if let objects = objects as? [PFObject] {
-                    self.messages = objects
-                    self.tableView.reloadData()
-                    for object in objects {
-                        println(object.objectId)
-                    }
-                }
-            } else {
-                // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
-            }
-        }
+        self.messages = ParseClient().sharedInstance.queryMessages()!
+        self.tableView.reloadData()
     }
+    
     
     func timer() {
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "queryMessages", userInfo: nil, repeats: true)
@@ -80,16 +63,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell", forIndexPath: indexPath) as! UITableViewCell
-        let message = messages[indexPath.row] as PFObject
-        var msg = ""
-        if let user : PFUser = message["user"] as? PFUser {
-            let username = user.username!
-            msg = "\(username): "
-        }
-        
-        msg += message["text"] as! String
+        let message = messages[indexPath.row] as! Message
 
-        cell.textLabel?.text = msg
+        cell.textLabel?.text = message.text
         return cell
     }
 

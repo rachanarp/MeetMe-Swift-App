@@ -19,8 +19,7 @@ class User: NSObject{
     
     var name : String?
     var password : String?
-    var profileImageUrl : String?
-    var location: String? //CLLocationCoordinate2D?
+    var location : String? //location of the message sender - will only be set in the context of a message
     
     static var currentUser : User? = nil
     
@@ -30,19 +29,15 @@ class User: NSObject{
         {
             self.name = user!.username
             self.password = user!.password
-            //self.profileImageUrl = user["profile_image_url"] as? String
-            self.location = user!["location"] as? String//CLLocationCoordinate2D
             return self
         }
         return nil
     }
     
     func initWith(name: String?, password: String?) -> User?{
-
-            self.name = name
-            //self.profileImageUrl = user["profile_image_url"] as? String
-            self.password = password
-            return self
+        self.name = name
+        self.password = password
+        return self
     }
     
     static func getCurrentUser() -> User? {

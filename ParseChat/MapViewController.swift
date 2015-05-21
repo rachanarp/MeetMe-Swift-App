@@ -16,6 +16,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let regionRadius: CLLocationDistance = 1000
     let locationmgr = CLLocationManager()
     @IBOutlet weak var destinationLabel: UILabel!
+    var intervalString : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,33 +40,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             //Rdio 37.7676116,-122.4109711
             let destinationLocation = CLLocation(latitude: 37.7676116, longitude: -122.4109711)
             let geoCoder = CLGeocoder()
-            geoCoder.geocodeAddressString("1550 Bryant Street, San Francisco, CA", completionHandler: { (placemarks:[AnyObject]!, error:NSError!) -> Void in
+            geoCoder.geocodeAddressString(kDefaultMeetMeDestination, completionHandler: {
+                (placemarks:[AnyObject]!, error:NSError!) -> Void in
+                
                 let topResult : CLPlacemark = (placemarks as? NSArray)!.objectAtIndex(0) as! CLPlacemark
                 let placemark : MKPlacemark = MKPlacemark(placemark: topResult)
 
                 self.mapView.addAnnotation(placemark);
                 self.centerMapOnLocation(placemark.location);
-                
-                var request : MKDirectionsRequest = MKDirectionsRequest()
-                //ritual coffee : 37.755185, -122.424366
-                request.setSource(MKMapItem.mapItemForCurrentLocation())
-                request.setDestination(MKMapItem(placemark: placemark))
-                request.transportType = MKDirectionsTransportType.Automobile
-                request.requestsAlternateRoutes = false
-                let directions = MKDirections(request: request)
-                directions.calculateETAWithCompletionHandler({ (response: MKETAResponse!, error:NSError!) -> Void in
-                    if (nil == error)
-                    {
-                        let interval = (response as MKETAResponse).expectedTravelTime
-                        println(interval)
-                    }
-                })
-                
             })
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    //TODO: Optimize the location calls.
+    /*func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         switch (manager.desiredAccuracy) {
         case kCLLocationAccuracyThreeKilometers :
                 locationmgr.desiredAccuracy = kCLLocationAccuracyKilometer
@@ -73,31 +61,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             locationmgr.desiredAccuracy = kCLLocationAccuracyBest
         }
         
-        locationmgr.stopUpdatingLocation()
-        locationmgr.startMonitoringSignificantLocationChanges()
+        //locationmgr.stopUpdatingLocation()
+        //locationmgr.startMonitoringSignificantLocationChanges()
         
-    }
+    }*/
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        //centerMapOnLocation(newLocation)
+
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString("1550 Bryant Street, San Francisco, CA", completionHandler: { (placemarks:[AnyObject]!, error:NSError!) -> Void in
+        
+        geoCoder.geocodeAddressString(kDefaultMeetMeDestination, completionHandler: { (placemarks:[AnyObject]!, error:NSError!) -> Void in
             let topResult : CLPlacemark = (placemarks as? NSArray)!.objectAtIndex(0) as! CLPlacemark
             let placemark : MKPlacemark = MKPlacemark(placemark: topResult)
             
             let currentmark : MKPlacemark = MKPlacemark(coordinate: newLocation.coordinate, addressDictionary: nil)
             
-            //self.mapView.addAnnotation(currentmark);
-            self.centerMapOnLocation(currentmark.location);
+            //This fights for attention. TODO fix it.
+            self.centerMapOnLocation(currentmark.location)
             
+            self.getETA(currentmark, toPlacemark: placemark)
+            
+            self.title = self.intervalString
+        })
+    }
+    
+    func getETA(fromPlacemark:MKPlacemark, toPlacemark:MKPlacemark) {
+
+        //Create request objet
         var request : MKDirectionsRequest = MKDirectionsRequest()
-        //ritual coffee : 37.755185, -122.424366
-        
-        request.setSource(MKMapItem(placemark:currentmark) /*MKMapItem.mapItemForCurrentLocation() */)
-        request.setDestination(MKMapItem(placemark: placemark))
+        request.setSource(MKMapItem(placemark:fromPlacemark) )
+        request.setDestination(MKMapItem(placemark: toPlacemark))
         request.transportType = MKDirectionsTransportType.Automobile
         request.requestsAlternateRoutes = false
+        
         let directions = MKDirections(request: request)
+        
+        
+        
         directions.calculateETAWithCompletionHandler({ (response: MKETAResponse!, error:NSError!) -> Void in
             if (nil == error)
             {
@@ -105,12 +105,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 let intervalhr = interval/3600
                 let intervalmin = (interval%3600)/60
                 let intervalsec = (interval%3600)%60
-                let intervalString = String(format: "%.0f:%2.0f:%.0f",intervalhr, intervalmin, intervalsec)
-                self.title = intervalString
-                println(intervalString)
+                self.intervalString = String(format: "%.0f:%2.0f:%.0f",intervalhr, intervalmin, intervalsec)
             }
         })
-    })
     }
 
     func centerMapOnLocation(location: CLLocation) {

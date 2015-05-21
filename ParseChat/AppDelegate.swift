@@ -17,52 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.setApplicationId("DXsvTSLgsKT03gSSqy6V5KbLwVpgfEjmEsKzzQUP", clientKey: "BXAzmCJhMtIVWhLVEiKIMzPCA5XI0Nt9NwvAOPVd")
-        
-        defaultLogin()
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector:("userDidLogin"), name: UserDidLoginNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:("userDidLogout"), name: UserDidLogoutNotification, object: nil)
+
+        ParseClient().sharedInstance.login()
         
         return true
     }
-    
-    func defaultLogin() {
-        var user = PFUser()
-        if (nil != User.getCurrentUser())
-        {
-        user.username = User.getCurrentUser()?.name
-        user.email = User.getCurrentUser()?.name
-        user.password = User.getCurrentUser()?.password
-        // other fields can be set just like with PFObject
-        //user["location"] =
-        
-            PFUser.logInWithUsernameInBackground(user.username!, password: user.password!) {
-                (user: PFUser?, error: NSError?) -> Void in
-                if user != nil {
-                    // Do stuff after successful login.
-                    var currUser = User().initWithPFUser(user)
-                    currUser?.password = User.getCurrentUser()?.password
-                    User.setCurrentUserWith(currUser)
-                    
-                    println("SIGNED IN")
-                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: UserDidLoginNotification, object: nil))
-                    
-                } else {
-                    // The login failed. Check error to see why.
-                    println(error)
-                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: UserDidLogoutNotification, object: nil))
-                }
-            }
-        
-        }
-        else {
-                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: UserDidLogoutNotification, object: nil))
-        }
-    }
+
     
     func userDidLogin(){
-       // window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
         var storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var chatsViewController = storyboard.instantiateViewControllerWithIdentifier("ChatsVC")  as! ChatViewController
         self.window?.rootViewController = UINavigationController(rootViewController: chatsViewController)

@@ -16,6 +16,7 @@
 		7C03A8871AF302E20005A828 /* ParseChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C03A8861AF302E20005A828 /* ParseChatTests.swift */; };
 		7CA733581B0CE3C200551891 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA733571B0CE3C200551891 /* User.swift */; };
 		7CA7335A1B0CE3CE00551891 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA733591B0CE3CE00551891 /* Message.swift */; };
+		7CC304941B0D61400010AAC9 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC304931B0D61400010AAC9 /* ParseClient.swift */; };
 		7CD2447A1AF3068B00C927E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD244791AF3068B00C927E7 /* LoginViewController.swift */; };
 		7CD2447C1AF3097200C927E7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2447B1AF3097200C927E7 /* ChatViewController.swift */; };
 		7CEDDA9A1B0BBB5D00DE264C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEDDA991B0BBB5D00DE264C /* MapViewController.swift */; };
@@ -46,6 +47,7 @@
 		7C03A8861AF302E20005A828 /* ParseChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseChatTests.swift; sourceTree = "<group>"; };
 		7CA733571B0CE3C200551891 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7CA733591B0CE3CE00551891 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		7CC304931B0D61400010AAC9 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		7CD244761AF3062F00C927E7 /* ParseChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParseChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		7CD244791AF3068B00C927E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7CD2447B1AF3097200C927E7 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				7CD244791AF3068B00C927E7 /* LoginViewController.swift */,
 				7CD2447B1AF3097200C927E7 /* ChatViewController.swift */,
 				7CEDDA991B0BBB5D00DE264C /* MapViewController.swift */,
+				7CC304931B0D61400010AAC9 /* ParseClient.swift */,
 			);
 			path = ParseChat;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				7CD2447C1AF3097200C927E7 /* ChatViewController.swift in Sources */,
 				7CEDDA9A1B0BBB5D00DE264C /* MapViewController.swift in Sources */,
 				7C03A8711AF302E20005A828 /* AppDelegate.swift in Sources */,
+				7CC304941B0D61400010AAC9 /* ParseClient.swift in Sources */,
 				7CA7335A1B0CE3CE00551891 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
