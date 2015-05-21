@@ -21,6 +21,7 @@
 		7CD2447C1AF3097200C927E7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2447B1AF3097200C927E7 /* ChatViewController.swift */; };
 		7CEDDA9A1B0BBB5D00DE264C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEDDA991B0BBB5D00DE264C /* MapViewController.swift */; };
 		7CEDDA9C1B0BE09800DE264C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CEDDA9B1B0BE09800DE264C /* MapKit.framework */; };
+		B736098F1B0DAF1600B06076 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736098E1B0DAF1600B06076 /* EventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		7CEDDA991B0BBB5D00DE264C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		7CEDDA9B1B0BE09800DE264C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		95F0C9BE0B9A68BF3CDAA26D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B736098E1B0DAF1600B06076 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		D7C612447A5F67E0EC917BC0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				7CD2447B1AF3097200C927E7 /* ChatViewController.swift */,
 				7CEDDA991B0BBB5D00DE264C /* MapViewController.swift */,
 				7CC304931B0D61400010AAC9 /* ParseClient.swift */,
+				B736098E1B0DAF1600B06076 /* EventViewController.swift */,
 			);
 			path = ParseChat;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				7CA733581B0CE3C200551891 /* User.swift in Sources */,
 				7CD2447C1AF3097200C927E7 /* ChatViewController.swift in Sources */,
 				7CEDDA9A1B0BBB5D00DE264C /* MapViewController.swift in Sources */,
+				B736098F1B0DAF1600B06076 /* EventViewController.swift in Sources */,
 				7C03A8711AF302E20005A828 /* AppDelegate.swift in Sources */,
 				7CC304941B0D61400010AAC9 /* ParseClient.swift in Sources */,
 				7CA7335A1B0CE3CE00551891 /* Message.swift in Sources */,

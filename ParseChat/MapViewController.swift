@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 
+var destinationAddressString: String?
+
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
  
@@ -38,6 +40,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             locationmgr.startUpdatingLocation()
             
             let geoCoder = CLGeocoder()
+            if (destinationAddressString == nil) {
+                destinationAddressString = kDefaultMeetMeDestination
+            }
             geoCoder.geocodeAddressString(kDefaultMeetMeDestination, completionHandler: {
                 (placemarks:[AnyObject]!, error:NSError!) -> Void in
                 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="n5w-xu-xkc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="n5w-xu-xkc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -152,7 +152,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wIs-xG-tbg"/>
+                    <navigationItem key="navigationItem" id="wIs-xG-tbg">
+                        <barButtonItem key="rightBarButtonItem" title="Event" id="G77-ZG-U4c">
+                            <connections>
+                                <segue destination="YXs-z6-Fb0" kind="push" id="6iJ-fY-Dhd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="destinationLabel" destination="9pr-Bb-8KM" id="iI5-Rh-c5x"/>
                         <outlet property="mapView" destination="7kQ-4J-vRr" id="3bi-oI-QhL"/>
@@ -197,6 +203,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tc3-wh-6XG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1078" y="348"/>
+        </scene>
+        <!--Event View Controller-->
+        <scene sceneID="bLc-zX-2gS">
+            <objects>
+                <viewController id="YXs-z6-Fb0" customClass="EventViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dP0-Wq-jz3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mm1-MN-FbV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ele-Zq-N9V">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxe-6Q-BfH">
+                                <rect key="frame" x="90" y="269" width="140" height="30"/>
+                                <state key="normal" title="Set New Destination">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSetDestination:" destination="YXs-z6-Fb0" eventType="touchUpInside" id="fwV-kG-oqL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKp-bx-5DN">
+                                <rect key="frame" x="80" y="202" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pwy-H1-axb">
+                                <rect key="frame" x="16" y="231" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sxe-6Q-BfH" firstAttribute="top" secondItem="pwy-H1-axb" secondAttribute="bottom" constant="8" id="5qX-3n-OHP"/>
+                            <constraint firstAttribute="centerY" secondItem="Sxe-6Q-BfH" secondAttribute="centerY" id="Ai8-Dv-JDt"/>
+                            <constraint firstAttribute="centerX" secondItem="Sxe-6Q-BfH" secondAttribute="centerX" id="DPT-ex-XYW"/>
+                            <constraint firstAttribute="centerX" secondItem="yKp-bx-5DN" secondAttribute="centerX" id="Dvh-yA-b0i"/>
+                            <constraint firstItem="pwy-H1-axb" firstAttribute="top" secondItem="yKp-bx-5DN" secondAttribute="bottom" constant="8" id="TX7-tZ-NHz"/>
+                            <constraint firstAttribute="centerX" secondItem="Sxe-6Q-BfH" secondAttribute="centerX" id="VUr-MS-Pfb"/>
+                            <constraint firstItem="pwy-H1-axb" firstAttribute="top" secondItem="yKp-bx-5DN" secondAttribute="bottom" constant="8" id="jzc-r8-wcH"/>
+                            <constraint firstAttribute="centerX" secondItem="pwy-H1-axb" secondAttribute="centerX" id="sCe-bf-RP2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6EX-pc-qIq"/>
+                    <connections>
+                        <outlet property="destinationTextField" destination="pwy-H1-axb" id="oOK-V0-MOS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dtc-t6-6Fd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="348"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
