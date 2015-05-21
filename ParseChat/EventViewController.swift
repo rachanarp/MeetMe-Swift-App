@@ -13,6 +13,7 @@ class EventViewController: UIViewController {
     @IBOutlet weak var destinationTextField: UITextField!
     @IBAction func onSetDestination(sender: AnyObject) {
         destinationAddressString = destinationTextField.text
+        self.navigationController?.popViewControllerAnimated(true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
