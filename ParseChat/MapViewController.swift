@@ -43,7 +43,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if (destinationAddressString == nil) {
                 destinationAddressString = kDefaultMeetMeDestination
             }
-            geoCoder.geocodeAddressString(kDefaultMeetMeDestination, completionHandler: {
+            geoCoder.geocodeAddressString(destinationAddressString, completionHandler: {
                 (placemarks:[AnyObject]!, error:NSError!) -> Void in
                 
                 let topResult : CLPlacemark = (placemarks as? NSArray)!.objectAtIndex(0) as! CLPlacemark
@@ -75,8 +75,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
 
         let geoCoder = CLGeocoder()
+        if (destinationAddressString == nil) {
+            destinationAddressString = kDefaultMeetMeDestination
+        }
         
-        geoCoder.geocodeAddressString(kDefaultMeetMeDestination, completionHandler: { (placemarks:[AnyObject]!, error:NSError!) -> Void in
+        geoCoder.geocodeAddressString(destinationAddressString, completionHandler: { (placemarks:[AnyObject]!, error:NSError!) -> Void in
             let topResult : CLPlacemark = (placemarks as? NSArray)!.objectAtIndex(0) as! CLPlacemark
             let placemark : MKPlacemark = MKPlacemark(placemark: topResult)
             
