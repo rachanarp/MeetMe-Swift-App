@@ -13,6 +13,11 @@ class EventGroup: NSObject{
     var groupID : String?
     var destination : String?
     
+    func initWithId(grpID: String!, loc: String!) {
+        self.groupID = grpID
+        self.destination = loc
+    }
+    
     func initWithMessages(messages : NSArray) {
      for message in messages {
         if let username : String? = (message as? Message)!.user!.name {

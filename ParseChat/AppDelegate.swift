@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func userDidLogin(){
         var storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var mapsViewController = storyboard.instantiateViewControllerWithIdentifier("MapsVC")  as! MapViewController
-        self.window?.rootViewController = UINavigationController(rootViewController: mapsViewController)
+        var evtViewController = storyboard.instantiateViewControllerWithIdentifier("EventsVC")  as! EventMasterViewController
+        self.window?.rootViewController = UINavigationController(rootViewController: evtViewController)
     }
     
     func userDidLogout() {

@@ -197,7 +197,68 @@
             </objects>
             <point key="canvasLocation" x="1434" y="1016"/>
         </scene>
-        <!--Meet Loc-->
+        <!--Event Master View Controller-->
+        <scene sceneID="2qN-Kk-Shm">
+            <objects>
+                <viewController storyboardIdentifier="EventsVC" id="4os-26-8hU" customClass="EventMasterViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QpV-DD-bZP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ad4-Dz-ys5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fIf-FE-v4t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KUS-h8-ade">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="evtCell" id="sF5-Hn-x3M" customClass="EventTableViewCell" customModule="ParseChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sF5-Hn-x3M" id="rKW-Ev-jFA">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfx-RE-UE4">
+                                                    <rect key="frame" x="8" y="8" width="271" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Yfx-RE-UE4" secondAttribute="bottom" id="FgP-9Y-7fs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Yfx-RE-UE4" secondAttribute="trailing" id="GhF-mL-dQr"/>
+                                                <constraint firstItem="Yfx-RE-UE4" firstAttribute="leading" secondItem="rKW-Ev-jFA" secondAttribute="leadingMargin" id="rz7-Y6-dTR"/>
+                                                <constraint firstItem="Yfx-RE-UE4" firstAttribute="top" secondItem="rKW-Ev-jFA" secondAttribute="topMargin" id="zsN-2X-79z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="Yfx-RE-UE4" id="VXs-6h-ldw"/>
+                                            <segue destination="q05-X8-ZRN" kind="push" id="hjI-82-9WL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KUS-h8-ade" firstAttribute="leading" secondItem="fIf-FE-v4t" secondAttribute="leading" id="Y5L-lq-ZdY"/>
+                            <constraint firstAttribute="trailing" secondItem="KUS-h8-ade" secondAttribute="trailing" id="Y6L-cp-xgH"/>
+                            <constraint firstItem="KUS-h8-ade" firstAttribute="top" secondItem="fIf-FE-v4t" secondAttribute="top" id="YpX-mx-Yiq"/>
+                            <constraint firstItem="Ad4-Dz-ys5" firstAttribute="top" secondItem="KUS-h8-ade" secondAttribute="bottom" id="joe-QY-VhO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ewm-7k-oGw"/>
+                    <connections>
+                        <outlet property="tableView" destination="KUS-h8-ade" id="GaY-iL-aTU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iwb-F9-GdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1058" y="332"/>
+        </scene>
+        <!--Map View-->
         <scene sceneID="N2s-6F-Xrg">
             <objects>
                 <viewController storyboardIdentifier="MapsVC" id="q05-X8-ZRN" customClass="MapViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
@@ -222,11 +283,11 @@
                             <constraint firstItem="7kQ-4J-vRr" firstAttribute="top" secondItem="9bS-7P-eCx" secondAttribute="top" id="qYY-Ro-zl6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Meet Loc" id="wIs-xG-tbg">
+                    <navigationItem key="navigationItem" title="Map View" id="wIs-xG-tbg">
                         <barButtonItem key="leftBarButtonItem" systemItem="compose" id="4cB-HI-JV9">
                             <connections>
-                                <segue destination="n5w-xu-xkc" kind="popover" popoverAnchorBarButtonItem="4cB-HI-JV9" id="s7K-Jw-sEM">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                <segue destination="n5w-xu-xkc" kind="popover" popoverAnchorView="7kQ-4J-vRr" id="s7K-Jw-sEM">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
@@ -273,7 +334,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="q05-X8-ZRN" kind="relationship" relationship="rootViewController" id="IiO-qv-rrW"/>
+                        <segue destination="4os-26-8hU" kind="relationship" relationship="rootViewController" id="zbK-Cd-whs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tc3-wh-6XG" userLabel="First Responder" sceneMemberID="firstResponder"/>

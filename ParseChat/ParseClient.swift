@@ -134,6 +134,39 @@ class ParseClient : NSObject {
         return lastMessagesCache
     }
     
+    func queryEvents(completion: ([EventGroup]) -> Void) {
+        var query = PFQuery(className:"Message")
+        query.includeKey("user")
+        var out = [EventGroup]()
+        var excluder = [String]()
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        var test = find(excluder, object["groupID"] as! String)
+                        if (test == nil) {
+                            excluder.append(object["groupID"] as! String)
+                            var newEvt = EventGroup()
+                            newEvt.initWithId(object["groupID"] as! String, loc: object["groupID"] as! String)
+                            out.append(newEvt)
+                        }
+                    }
+                }
+                completion(out)
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+    }
+    
     func getMessageCache() -> NSArray {
         return lastMessagesCache
     }
