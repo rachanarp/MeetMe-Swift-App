@@ -182,7 +182,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onSend:" destination="n5w-xu-xkc" eventType="touchUpInside" id="ZDJ-Cg-vGQ"/>
+                                    <action selector="onSent:" destination="n5w-xu-xkc" eventType="touchUpInside" id="wKY-cV-shA"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cug-HQ-FNo">

@@ -40,8 +40,13 @@ class MessageTableViewCell: UITableViewCell {
         
         //TODO: use the location to show the friend's status
         var locationStr = ""
+        locLabel.text = ""
         if let loc = myMessage?.location {
-            locLabel.text = loc
+            if (myMessage!.text == nil) {
+                locLabel.text = loc
+            } else {
+                locLabel.text = ""
+            }
         }
 
     }

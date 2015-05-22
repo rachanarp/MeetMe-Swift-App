@@ -53,13 +53,12 @@ class Message: NSObject {
                         userslocation.setValue(message, forKey: username!)
                     }
                 
+                }
+                
+                if ( nil != message.text) {
+                    messages.addObject(message)
+                }
 
-                if (message.groupID == kDefaultMeetMeGroupID) {
-                    if ( nil != message.text) {
-                        messages.addObject(message)
-                    }
-                }
-                }
             }
         }
         

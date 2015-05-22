@@ -35,21 +35,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onSend(sender: AnyObject) {
-        var message = Message()
-        message.text = chatfield.text
-        message.groupID = myEvent?.groupID
-        message.user = User.currentUser
-        message.destination = myEvent?.destination
-        ParseClient().sharedInstance.sendMessage(message)
-        queryMessages()
-        chatfield.text = ""
-    }
-    
     func queryMessages() {
         self.messages = ParseClient().sharedInstance.queryMessages()!
-       // let group = EventGroup().initWithMessages(ParseClient().sharedInstance.getMessageCache())
-        //println(group)
+        var out = [Message]()
+        for message in self.messages {
+            if let msg = message as? Message {
+                if msg.groupID == self.myEvent!.groupID {
+                    out.append(msg)
+                }
+            }
+        }
+        self.messages = out
         self.tableView.reloadData()
     }
     
@@ -74,6 +70,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
 
+    @IBAction func onSent(sender: AnyObject) {
+        var message = Message()
+        message.text = chatfield.text
+        message.groupID = myEvent?.groupID
+        message.user = User.currentUser
+        message.destination = myEvent?.destination
+        ParseClient().sharedInstance.sendMessage(message)
+        queryMessages()
+        chatfield.text = ""
+    }
     /*
     // MARK: - Navigation
 
